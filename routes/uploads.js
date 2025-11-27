@@ -14,3 +14,4 @@ router.post("/photo", upload.single("photo"), (req, res) => {
   res.json({ url });
 });
 
+module.exports = router; 
