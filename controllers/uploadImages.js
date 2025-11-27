@@ -1,7 +1,7 @@
 const fs = require("fs")
 const path = require("path")
-const Resume = require("../models/resumeModel")
-const upload = require("../middleware/uploadMiddelware")
+const Resume = require("../models/Resume")
+const upload = require("../middleware/upload")
 
 exports.uploadResumeImages = async (req, res) => {
     try {

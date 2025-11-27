@@ -1,4 +1,4 @@
-const Resume = require("../models/resumeModel");
+const Resume = require("../models/Resume");
 const path = require("path");
 const fs = require("fs");
 
