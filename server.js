@@ -14,8 +14,8 @@ const app = express();
 // ALLOWED ORIGINS
 // -------------------------------
 const allowedOrigins = [
-  "http://localhost:5173",               // Local frontend
-  process.env.CLIENT_URL                 // Netlify frontend
+  "http://localhost:5173",      // Local frontend
+  process.env.CLIENT_URL        // Deployed frontend (Netlify)
 ];
 
 console.log("Allowed Origins:", allowedOrigins);
@@ -25,17 +25,16 @@ console.log("Allowed Origins:", allowedOrigins);
 // -------------------------------
 app.use(cors({
   origin: function (origin, callback) {
-    // Allow requests with no origin (Postman, Server-to-server)
-    if (!origin) return callback(null, true);
+    if (!origin) return callback(null, true); // Postman, server-to-server
 
     if (!allowedOrigins.includes(origin)) {
       const msg = `CORS ERROR: Origin ${origin} not allowed`;
       return callback(new Error(msg), false);
     }
 
-    return callback(null, true);
+    callback(null, true);
   },
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
